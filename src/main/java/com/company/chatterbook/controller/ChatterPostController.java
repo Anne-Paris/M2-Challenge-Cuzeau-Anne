@@ -13,6 +13,7 @@ import com.company.chatterbook.models.ChatterPost;
 public class ChatterPostController {
     private List<User> userList;
 
+    // Copy/Paste from instructions:
     public ChatterPostController() {
         User luis = new User("Luis");
         User sue = new User("Sue");
@@ -41,11 +42,13 @@ public class ChatterPostController {
         userList = Arrays.asList(luis, sue, timothy, george, arturo, mariella, paolo, tri, jane, carol, carl);
     }
 
+    // URI and HTTP method to get JSON of a list of all users & their posts
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public List<User> getUserList() {
         return userList;
     }
 
+    // URI and HTTP method to get JSON of one user
     @RequestMapping(value = "/users/{name}", method = RequestMethod.GET)
     public User getUsersByName(@PathVariable String name) {
         User requested_user = null;
@@ -58,6 +61,7 @@ public class ChatterPostController {
         return requested_user;
     }
 
+    //URI and HTTP method to get specified user's posts
     @RequestMapping(value = "/users/{name}/chatterposts", method = RequestMethod.GET)
     public List<ChatterPost> getChatterpostsByName(@PathVariable String name) {
         User requested_user = null;
